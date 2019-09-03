@@ -1,17 +1,30 @@
-# Patternfly Seed
+# RHTE 2019 RHMI Hackathon UI
 
-Patternfly Seed is an open source build scaffolding utility for web apps. The primary purpose of this project is to give developers a jump start when creating new projects that will use patternfly. A secondary purpose of this project is to serve as a reference for how to configure various aspects of an application that uses patternfly, webpack, react, typescript, etc.
+This is a template repository used to build a UI to render results fetched from
+the Junction & Parking Meters API built as part of the Solution Pattern
+[here](https://github.com/evanshortiss/rhte-2019-hackathon-on-rhmi).
 
-Out of the box you'll get an app layout with chrome (header/sidebar), routing, build pipeline, test suite, and some code quality tools. Basically, all the essentials.
-
-<img width="1058" alt="Out of box dashboard view of patternfly seed" src="https://user-images.githubusercontent.com/5942899/62715686-fa954980-b9ce-11e9-9fc2-217b7a4d1d81.png">
+This repository is utilises Patternfly for building the UI. It was generated
+from the  on the [Patternfly React Seed](https://github.com/patternfly/patternfly-react-seed).
 
 ## Quick-start
 ```bash
-npm install yarn -g # ensure you have yarn on your machine globally
-git clone https://github.com/patternfly/patternfly-react-seed # clone the project
-cd patternfly-react-seed # navigate into the project directory
-yarn # install patternfly-react-seed dependencies
+# ensure you have yarn on your machine globally
+npm install yarn -g
+
+# clone the project
+git clone https://github.com/evanshortiss/rhte-2019-hackathon-on-rhmi-ui
+
+# navigate into the project directory
+cd rhte-2019-hackathon-on-rhmi-ui
+
+# create an environment variables file (.env)
+# replace the stub API key in .env with a real one
+cp .env.example .env
+
+# install patternfly-react-seed dependencies
+yarn
+
 yarn build # build the project
 yarn start # start the development server
 ```

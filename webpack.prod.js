@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -13,6 +14,11 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+    new webpack.EnvironmentPlugin({
+      // Inject Google Maps API that's provided at build time
+      // using an environment variable
+      MAPS_API_KEY: process.env.MAPS_API_KEY
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].bundle.css'

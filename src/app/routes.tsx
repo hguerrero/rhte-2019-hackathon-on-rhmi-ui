@@ -1,39 +1,13 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 import { Alert, PageSection } from '@patternfly/react-core';
-import { DynamicImport } from '@app/DynamicImport';
 import { accessibleRouteChangeHandler } from '@app/utils/utils';
-import { Dashboard } from '@app/Dashboard/Dashboard';
+import { TrafficMap } from '@app/TrafficMap/TrafficMap';
+import { ParkingMap } from '@app/ParkingMap/ParkingMap';
 import { NotFound } from '@app/NotFound/NotFound';
 import DocumentTitle from 'react-document-title';
 import { LastLocationProvider, useLastLocation } from 'react-router-last-location';
 let routeFocusTimer: number;
-const getSupportModuleAsync = () => {
-  return () => import(/* webpackChunkName: 'support' */ '@app/Support/Support');
-};
-
-const Support = (routeProps: RouteComponentProps) => {
-  const lastNavigation = useLastLocation();
-  return (
-    <DynamicImport load={getSupportModuleAsync()} focusContentAfterMount={lastNavigation !== null}>
-      {(Component: any) => {
-        let loadedComponent: any;
-        if (Component === null) {
-          loadedComponent = (
-            <PageSection aria-label="Loading Content Container">
-              <div className="pf-l-bullseye">
-                <Alert title="Loading" className="pf-l-bullseye__item" />
-              </div>
-            </PageSection>
-          );
-        } else {
-          loadedComponent = <Component.Support {...routeProps} />;
-        }
-        return loadedComponent;
-      }}
-    </DynamicImport>
-  );
-};
 
 const RouteWithTitleUpdates = ({ component: Component, isAsync = false, title, ...rest }) => {
   const lastNavigation = useLastLocation();
@@ -70,21 +44,21 @@ export interface IAppRoute {
 
 const routes: IAppRoute[] = [
   {
-    component: Dashboard,
+    component: TrafficMap,
     exact: true,
     icon: null,
-    label: 'Dashboard',
+    label: 'Traffic Map',
     path: '/',
-    title: 'Main Dashboard Title'
+    title: 'Traffic Map'
   },
   {
-    component: Support,
+    component: ParkingMap,
     exact: true,
     icon: null,
     isAsync: true,
-    label: 'Support',
-    path: '/support',
-    title: 'Support Page Title'
+    label: 'Parking Map',
+    path: '/parking-map',
+    title: 'Parking Map'
   }
 ];
 

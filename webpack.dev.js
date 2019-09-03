@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require("webpack-merge");
+const Dotenv = require('dotenv-webpack')
 const common = require("./webpack.common.js");
 
 const HOST = process.env.HOST || "localhost";
@@ -8,6 +9,13 @@ const PORT = process.env.PORT || "9000";
 module.exports = merge(common, {
   mode: "development",
   devtool: "eval-source-map",
+  plugins: [
+    // Inject a Google Maps API key using .env file
+    new Dotenv({
+      path: '.env', // Path to .env file (this is the default)
+      safe: true    // Don't load env.example
+    })
+  ],
   devServer: {
     contentBase: "./dist",
     host: HOST,

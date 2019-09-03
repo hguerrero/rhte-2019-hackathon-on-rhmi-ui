@@ -35,9 +35,9 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({children}) => {
   };
   const Header = (
     <PageHeader
-      logo="Patternfly"
+      logo="RHTE 2019 - RHMI Hackathon"
       logoProps={logoProps}
-      toolbar="Toolbar"
+      toolbar="Welcome!"
       showNavToggle={true}
       isNavOpen={isNavOpen}
       onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
